@@ -14,6 +14,6 @@ jobs:
           docker build -t dimilan/testimage:latest ./frontend
       - name: Push images to Dockerhub
         run: |
-          docker login -u ThijsGeeraert2 -p ${{ secrets.DOCKERHUBTOKEN }}
-          docker push dimilan/feimage:latest
-          docker push dimilan/beimage:latest
+          docker login -u thijsgeeraert -p ${{ secrets.DOCKERHUBTOKEN }}
+          docker push thijsgeeraert/feimage:latest
+          docker push thijsgeeraert/beimage:latest
