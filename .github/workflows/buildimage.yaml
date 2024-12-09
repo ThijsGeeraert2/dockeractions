@@ -1,6 +1,12 @@
 name: Build Docker images from project
 
-on: [workflow_dispatch]
+on: #[workflow_dispatch]
+  push:
+    branches:
+      - master
+    paths: 
+      - 'backend'
+      - 'frontend'
 
 jobs:
   build:
@@ -15,5 +21,5 @@ jobs:
       - name: Push images to Dockerhub
         run: |
           docker login -u thijsgeeraert -p ${{ secrets.DOCKERHUBTOKEN }}
-          docker push thijsgeeraert/feimage:latest
-          docker push thijsgeeraert/beimage:latest
+          docker push dimilan/feimage:latest
+          docker push dimilan/beimage:latest
