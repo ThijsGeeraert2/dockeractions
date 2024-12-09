@@ -1,11 +1,10 @@
-name: manually Build Docker images from project
+name: Manually Build Docker images from project
 
-on: [workflow_dispatch]
-push: 
-  branches:
-    - master
-
-
+on:
+  workflow_dispatch:
+  push: 
+    branches:
+      - master
 
 jobs:
   build:
@@ -13,12 +12,15 @@ jobs:
 
     steps: 
       - uses: actions/checkout@v4
-      - name: Build the Docker image
+
+      - name: Build the Docker images
         run: |
-          docker build -t dimilan/testimage:latest ./backend
-          docker build -t dimilan/testimage:latest ./frontend
-        run: |
+          docker build -t dimilan/feimage:latest ./frontend
+          docker build -t dimilan/beimage:latest ./backend
+
       - name: Push images to Dockerhub
+        run: |
           docker login -u thijsgeeraert -p ${{ secrets.DOCKERHUBTOKEN }}
           docker push dimilan/feimage:latest
           docker push dimilan/beimage:latest
+
