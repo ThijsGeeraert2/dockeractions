@@ -11,5 +11,4 @@ jobs:
       - name: Build the Docker image
         run: |
           docker build -t dimilan/testimage:latest ./backend
-        run: |
           docker build -t dimilan/testimage:latest ./frontend
